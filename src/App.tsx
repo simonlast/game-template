@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react"
+import "./App.css"
+import p5 from "p5"
+import sketch from "./sketch"
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+interface AppProps {}
+
+interface AppState {}
+
+class App extends Component<AppProps, AppState> {
+	private wrapper: HTMLDivElement | null = null
+	private canvas: p5 | undefined
+
+	constructor(initialState: AppState) {
+		super(initialState)
+		this.state = {}
+	}
+
+	componentDidMount() {
+		if (this.wrapper) {
+			this.canvas = new p5(sketch, this.wrapper)
+		}
+	}
+
+	render() {
+		return <div className="App" ref={wrapper => (this.wrapper = wrapper)}></div>
+	}
 }
 
-export default App;
+export default App

@@ -277,19 +277,19 @@ export default function(p: p5) {
 
 		rays = rays.filter(obj => obj.step(dt))
 		walls = walls.filter(obj => obj.step(dt))
-		// for (const obj of grid) {
-		// 	obj.step(dt)
-		// }
+		for (const obj of grid) {
+			obj.step(dt)
+		}
 		player.step(dt)
 
 		player.render()
 
-		for (const obj of walls) {
-			obj.render()
-		}
-		// for (const obj of grid) {
+		// for (const obj of walls) {
 		// 	obj.render()
 		// }
+		for (const obj of grid) {
+			obj.render()
+		}
 		for (const obj of rays) {
 			obj.render()
 		}
